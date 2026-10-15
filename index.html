@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maria Clara | Bolos Artísticos e Doces</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: '#800020',
+                        'magenta-dark': '#4a0013',
+                        'magenta-light': '#fdf0f3',
+                        'magenta-soft': '#f8d7da'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; -webkit-tap-highlight-color: transparent; }
+        .scroll-clean::-webkit-scrollbar { display: none; }
+        .scroll-clean { -ms-overflow-style: none; scrollbar-width: none; }
+        .img-fade { transition: opacity 0.3s ease-in-out, transform 0.3s ease-out; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-magenta selection:text-white pb-24 md:pb-0">
+
+    <!-- NAV BAR COM LOGOTIPO -->
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#inicio" class="flex items-center gap-3">
+                    <img src="imagens/logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150/800020/FFFFFF?text=Maria+Clara';" alt="Maria Clara Bolos Artísticos Logo" class="h-12 w-auto object-contain rounded-full border border-magenta-soft p-0.5">
+                    <div class="flex flex-col">
+                        <span class="text-lg sm:text-xl font-extrabold text-magenta tracking-tight uppercase">Maria Clara</span>
+                        <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest font-semibold italic -mt-1">Bolos Artísticos e Doces</span>
+                    </div>
+                </a>
+                
+                <nav class="hidden md:flex space-x-8 font-semibold text-sm text-gray-700">
+                    <a href="#inicio" class="hover:text-magenta transition duration-200">Início</a>
+                    <a href="#kits" class="hover:text-magenta transition duration-200 text-magenta font-bold">Kits Especiais</a>
+                    <a href="#cardapio" class="hover:text-magenta transition duration-200">Tabela de Preços</a>
+                    <a href="#galeria" class="hover:text-magenta transition duration-200">Galeria</a>
+                    <a href="#calculadora" class="hover:text-magenta transition duration-200">Calculadora</a>
+                    <a href="#contacto-secao" class="hover:text-magenta transition duration-200">Contacto</a>
+                </nav>
+
+                <button onclick="toggleCarrinho()" class="relative bg-magenta-light hover:bg-magenta-soft text-magenta px-3.5 py-2.5 rounded-xl transition flex items-center gap-2 font-semibold text-sm border border-magenta-soft">
+                    <i class="fa-solid fa-cart-shopping text-magenta text-lg"></i>
+                    <span class="hidden sm:inline">Meu Pedido</span>
+                    <span id="cart-count-header" class="bg-magenta text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative text-white min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-r from-magenta to-magenta-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-12 md:py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-5 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/20 text-white border border-white/30 px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-sm">
+                        <i class="fa-solid fa-cake-candles text-amber-300"></i> Elisa Monteiro | Bolos Artísticos
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">Maria Clara Bolos Artísticos</h1>
+                    <p class="text-magenta-light text-lg sm:text-2xl font-medium italic">Bolos, doces e diversos para todas as ocasiões</p>
+                    <p class="text-white/90 text-xs sm:text-base leading-relaxed max-w-lg mx-auto md:mx-0">
+                        Transformamos os seus momentos especiais em memórias inesquecíveis na Beira. Não fazemos entregas (levantamento no local).
+                    </p>
+                    <div class="pt-3 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <a href="#kits" class="bg-white hover:bg-magenta-light text-magenta font-extrabold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gift"></i> Ver Kits de Aniversário
+                        </a>
+                        <a href="#cardapio" class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-extrabold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                            Ver Tabela de Preços <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- IMAGEM DA HERO SECTION -->
+                <div class="flex justify-center md:justify-end">
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
+                        <img src="imagens/logo.png" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Maria Clara Bolos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-zoom-in">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: KITS ESPECIAIS E KIT DE ANIVERSÁRIO -->
+    <section id="kits" class="bg-gradient-to-b from-magenta-light to-white py-12 border-b border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-gift mr-1"></i> Destaques & Kits Especiais
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Kit de Aniversário e Festas</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Combos perfeitos para celebrar a sua data especial com praticidade e sabor!</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-magenta p-6 sm:p-8 flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+                    <img src="imagens/boloaniver.jpeg" onerror="tratarErroImagem(this)" alt="Kit de Aniversário" class="w-full h-full object-cover">
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <div class="bg-amber-400 text-gray-900 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider inline-block">Kit Festa / Aniversário</div>
+                    <h3 class="text-2xl font-black text-gray-900">Kit Completo de Aniversário</h3>
+                    <p class="text-2xl font-black text-magenta">7.200,00 MT <span class="text-xs text-gray-400 font-normal line-through">7.600 MT</span></p>
+                    <ul class="text-xs text-gray-700 space-y-2 pt-2 border-t border-gray-100">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-magenta"></i> 1 Bolo Personalizado (Tamanho 18)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-magenta"></i> 2 Dúzias de Salgados Variados</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-magenta"></i> 12 Docinhos Tradicionais</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-magenta"></i> Velas e Topo decorativo incluídos</li>
+                    </ul>
+                    <div class="pt-4">
+                        <button onclick="enviarKitWhatsApp('Kit Completo de Aniversário', '7.200,00 MT')" class="w-full bg-magenta hover:bg-magenta-dark text-white py-3.5 rounded-xl font-extrabold text-xs transition duration-300 flex items-center justify-center gap-2 shadow-md uppercase tracking-wider">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Encomendar Kit de Aniversário
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: TABELA DE PREÇOS GERAL -->
+    <section id="cardapio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center space-y-2 mb-8">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Tabela de Preços Geral</h2>
+            <p class="text-gray-500 text-xs sm:text-sm">Explore os nossos bolos organizados por categorias</p>
+            <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+        </div>
+
+        <div class="max-w-lg mx-auto mb-6">
+            <div class="relative flex items-center bg-white shadow-sm border border-gray-200 rounded-2xl overflow-hidden focus-within:border-magenta focus-within:ring-2 focus-within:ring-magenta/20 transition-all">
+                <span class="pl-4 text-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" id="campo-busca" oninput="filtrarProdutos()" placeholder="Buscar bolo infantil, batismo, aniversário..." class="w-full pl-3 pr-4 py-3 text-sm bg-transparent outline-none text-gray-700">
+            </div>
+        </div>
+
+        <div class="w-full border-b border-gray-200 mb-8 overflow-hidden">
+            <div class="flex space-x-2 overflow-x-auto pb-3 scroll-clean justify-start md:justify-center" id="container-categorias">
+                <button onclick="filtrarCategoria('todos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-magenta text-white text-xs sm:text-sm transition shadow-sm">Todos</button>
+                <button onclick="filtrarCategoria('infantil', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Infantil</button>
+                <button onclick="filtrarCategoria('aniversario', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Aniversário</button>
+                <button onclick="filtrarCategoria('batismo', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Batismo</button>
+                <button onclick="filtrarCategoria('festas', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Festas</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="lista-produtos"></div>
+    </section>
+
+    <!-- GALERIA DE FOTOS -->
+    <section id="galeria" class="bg-gradient-to-b from-white to-magenta-light py-12 border-t border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-camera mr-1"></i> Nossos Trabalhos
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Galeria Maria Clara</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Veja nossos bolos artísticos personalizados e criações exclusivas</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div onclick="abrirZoom('imagens/boloaniver.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloaniver.jpeg" onerror="tratarErroImagem(this)" alt="Bolo Decorado" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/boloaniver3.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloaniver3.jpeg" onerror="tratarErroImagem(this)" alt="Bolo Especial" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/combosalgados.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/combosalgados.jpeg" onerror="tratarErroImagem(this)" alt="Salgados e Diversos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/mesadoces.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/mesadoces.jpeg" onerror="tratarErroImagem(this)" alt="Doces e Sobremesas" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE EVENTOS -->
+    <section id="calculadora" class="bg-gray-50 py-12 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="text-xs font-bold text-magenta uppercase tracking-wider">Simulador Rápido</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Calculadora de Eventos</h2>
+                <p class="text-gray-500 text-xs sm:text-sm">Calcule a estimativa de salgados e o tamanho de bolo ideal para o seu evento</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-magenta-soft space-y-6">
+                <form id="formCalculadora" onsubmit="calcularEvento(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="calcPessoas" class="block text-xs font-bold text-magenta uppercase tracking-wider mb-2">Nº de Convidados *</label>
+                        <input type="number" id="calcPessoas" min="1" placeholder="Ex: 25" required class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-magenta">
+                    </div>
+
+                    <div>
+                        <label for="calcTipo" class="block text-xs font-bold text-magenta uppercase tracking-wider mb-2">Tipo de Evento *</label>
+                        <select id="calcTipo" required class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-magenta">
+                            <option value="Aniversário">Aniversário</option>
+                            <option value="Batismo">Batismo</option>
+                            <option value="Infantil">Festa Infantil</option>
+                            <option value="Festas">Festas Gerais / Corporativo</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2 pt-2">
+                        <button type="submit" class="w-full bg-magenta hover:bg-magenta-dark text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Calcular Estimativa
+                        </button>
+                    </div>
+                </form>
+
+                <div id="resultadoCalculadora" class="hidden bg-magenta-light p-5 rounded-2xl border border-magenta-soft space-y-4">
+                    <h3 class="font-bold text-magenta text-sm sm:text-base border-b border-magenta-soft pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-check"></i> Recomendação Maria Clara:
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                        <div class="bg-white p-3 rounded-xl border border-magenta-soft">
+                            <strong class="text-gray-800 block">🥐 Salgados Sugeridos:</strong>
+                            <span id="resSalgados" class="text-magenta font-bold">0 dúzias</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-magenta-soft">
+                            <strong class="text-gray-800 block">🎂 Bolo Sugerido:</strong>
+                            <span id="resBolo" class="text-magenta font-bold">Forma 18</span>
+                        </div>
+                    </div>
+
+                    <button onclick="enviarCalculoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs uppercase tracking-wide">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Pedir Orçamento Deste Cálculo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO EXCLUSIVA DE CONTACTO & PAGAMENTO M-PESA -->
+    <section id="contacto-secao" class="bg-gradient-to-b from-white to-magenta-light/50 py-12 border-t border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-10">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-paper-plane mr-1"></i> Fale Connosco
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Entre em Contacto</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Faça já a sua encomenda (Lembre-se: não fazemos entregas, levantamento no local).</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-8">
+                <!-- TELEFONE / WHATSAPP -->
+                <div class="bg-white p-6 rounded-2xl border border-magenta-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-magenta-light rounded-full flex items-center justify-center mx-auto text-magenta text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Telefone & WhatsApp</h3>
+                    <p class="text-xs text-gray-500">Elisa Monteiro</p>
+                    <a href="https://wa.me/258840108477" target="_blank" class="inline-block font-extrabold text-magenta hover:text-magenta-dark text-sm tracking-wide">
+                        +258 84 010 8477
+                    </a>
+                </div>
+
+                <!-- PAGAMENTO M-PESA -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-magenta rounded-2xl shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto text-magenta text-xl font-black">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Método de Pagamento</h3>
+                    <p class="text-xs text-gray-500">M-Pesa para encomendas</p>
+                    <div class="bg-magenta-light p-2 rounded-xl text-xs space-y-1">
+                        <p class="font-extrabold text-magenta text-sm">840108477</p>
+                        <p class="font-bold text-gray-700">Maria Clara / Elisa Monteiro</p>
+                    </div>
+                </div>
+
+                <!-- LOCALIZAÇÃO -->
+                <div class="bg-white p-6 rounded-2xl border border-magenta-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-magenta-light rounded-full flex items-center justify-center mx-auto text-magenta text-xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Nossa Localização</h3>
+                    <p class="text-xs text-gray-500">Levantamento no Local</p>
+                    <span class="inline-block font-extrabold text-gray-800 text-sm">
+                        Beira - Pioneiros (Rua da escola da Fátima)
+                    </span>
+                </div>
+
+                <!-- HORÁRIO & PRAZOS -->
+                <div class="bg-white p-6 rounded-2xl border border-magenta-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-magenta-light rounded-full flex items-center justify-center mx-auto text-magenta text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Atendimento</h3>
+                    <p class="text-xs text-gray-500">Segunda a Sábado</p>
+                    <span class="inline-block font-extrabold text-magenta text-sm">
+                        08h às 17h
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE ZOOM / LIGHTBOX -->
+    <div id="modalZoom" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md cursor-zoom-out" onclick="fecharZoom()">
+        <button onclick="fecharZoom()" class="absolute top-5 right-5 text-white/80 hover:text-white text-3xl z-50 p-2"><i class="fa-solid fa-xmark"></i></button>
+        <img id="imgModalZoom" src="" alt="Imagem Ampliada" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl transition-transform duration-300">
+    </div>
+
+    <!-- MODAL DE ESCOLHA (TAMANHOS / TIPOS) -->
+    <div id="modalOpcoes" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all flex flex-col max-h-[90vh]">
+            <div class="relative bg-magenta text-white p-4 sm:p-5 flex items-center justify-between">
+                <h3 id="modalOpcoesTitulo" class="font-bold text-base sm:text-lg text-white">Escolher Opção</h3>
+                <button onclick="fecharModalOpcoes()" class="text-white/80 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1" id="modalOpcoesCorpo"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-3">
+                <div>
+                    <span class="text-[10px] sm:text-xs text-gray-400 block">Preço Total</span>
+                    <span id="modalOpcoesPreco" class="text-lg sm:text-xl font-extrabold text-magenta">0 MZN</span>
+                </div>
+                <button onclick="confirmarAdicaoCarrinho()" class="bg-magenta hover:bg-magenta-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRAWER / MODAL DO CARRINHO -->
+    <div id="carrinho-modal" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity duration-300 flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
+            <div class="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between bg-magenta text-white">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-basket-shopping text-white text-xl"></i>
+                    <h3 class="font-bold text-base sm:text-lg">Seu Pedido</h3>
+                </div>
+                <button onclick="toggleCarrinho()" class="text-white/80 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-3" id="itens-carrinho"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 space-y-4">
+                <div class="bg-magenta-light/60 p-3 rounded-xl border border-magenta-soft text-xs space-y-1">
+                    <span class="block font-bold text-magenta uppercase tracking-wider">💳 Método de Pagamento (M-Pesa):</span>
+                    <p class="text-gray-700"><strong>Número:</strong> 840108477 | <strong>Nome:</strong> Maria Clara / Elisa Monteiro</p>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-2">
+                    <span class="block text-xs font-bold text-magenta uppercase tracking-wider">Forma de Entrega:</span>
+                    <div class="text-xs p-2 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 font-medium">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> Apenas levantamento no local (Beira - Pioneiros, Rua da escola da Fátima). Não fazemos entregas.
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between text-base font-bold text-gray-800 pt-1 border-t border-gray-200">
+                        <span>Total Final:</span>
+                        <span id="total-carrinho" class="text-xl text-magenta font-extrabold">0 MZN</span>
+                    </div>
+                </div>
+
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Finalizar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://wa.me/258840108477?text=Ol%C3%A1!%20Estou%20no%20site%20da%20Maria%20Clara%20Bolos%20Art%C3%ADsticos%20e%20gostaria%20de%20fazer%20uma%20encomenda." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3.5 md:px-5 md:py-3 rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2 group hover:scale-105 active:scale-95 border-2 border-white"
+       aria-label="Atendimento via WhatsApp">
+        <i class="fa-brands fa-whatsapp text-2xl md:text-2xl"></i>
+        <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">Fazer Encomenda</span>
+    </a>
+
+    <!-- BARRA DE MENU FLUTUANTE (MOBILE NAVIGATION BAR) -->
+    <nav class="fixed bottom-3 left-4 right-4 z-40 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-magenta-soft p-1.5 md:hidden">
+        <div class="flex justify-around items-center">
+            <a href="#inicio" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-magenta transition text-center">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Início</span>
+            </a>
+            <a href="#kits" class="flex flex-col items-center py-1 px-2 text-magenta font-bold transition text-center">
+                <i class="fa-solid fa-gift text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Kits</span>
+            </a>
+            <a href="#cardapio" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-magenta transition text-center">
+                <i class="fa-solid fa-list text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Preços</span>
+            </a>
+            <button onclick="toggleCarrinho()" class="relative flex flex-col items-center py-1 px-2 text-magenta font-bold transition text-center">
+                <i class="fa-solid fa-basket-shopping text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Pedido</span>
+                <span id="cart-count-float" class="absolute -top-1 -right-1 bg-magenta text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FOOTER COM LOGOTIPO E CONTACTOS -->
+    <footer id="contacto" class="bg-gradient-to-b from-magenta to-magenta-dark text-white pt-12 pb-16 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div class="space-y-3 flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-3">
+                    <img src="imagens/logo.png" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150/800020/FFFFFF?text=Maria+Clara';" alt="Maria Clara Logo Rodapé" class="h-12 w-auto object-contain bg-white rounded-full p-1 border border-magenta-soft">
+                    <h3 class="text-xl font-extrabold tracking-wide text-white uppercase">Maria Clara</h3>
+                </div>
+                <p class="text-magenta-light text-xs sm:text-sm leading-relaxed">Bolos artísticos, doces e diversos feitos com muito amor e dedicação.</p>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-white tracking-wider">Contactos & Localização</h4>
+                <p class="text-magenta-light text-xs sm:text-sm"><i class="fa-solid fa-location-dot mr-2"></i> Beira - Pioneiros (Rua da escola da Fátima)</p>
+                <p class="text-magenta-light text-xs sm:text-sm"><i class="fa-solid fa-phone mr-2"></i> +258 84 010 8477 (Elisa Monteiro)</p>
+                <p class="text-magenta-light text-xs sm:text-sm"><i class="fa-solid fa-clock mr-2"></i> Segunda a Sábado: 08h às 17h</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-white tracking-wider">Redes Sociais & Encomendas</h4>
+                <div class="flex justify-center md:justify-start gap-4 text-2xl pt-1">
+                    <a href="https://wa.me/258840108477" target="_blank" class="hover:text-amber-300 transition text-white" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/maria_clara_bolos_artisticos_" target="_blank" class="hover:text-amber-300 transition text-white" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-white/20 my-8 max-w-7xl mx-auto">
+        <div class="text-center text-xs text-magenta-light">&copy; 2026 Maria Clara Bolos Artísticos - Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- SCRIPTS JS -->
+    <script>
+        const produtosAginaSabores = [
+            {
+                id: 1,
+                nome: "Bolo Infantil Personalizado",
+                categoria: "infantil",
+                descricao: "Bolo decorado com temas infantis populares, recheios e coberturas deliciosas.",
+                imagens: ["imagens/boloaniver.jpeg", "imagens/boloaniver3.jpeg"],
+                opcoes: [
+                    { nome: "Tamanho 18", preco: 1300 },
+                    { nome: "Tamanho 19", preco: 1500 },
+                    { nome: "Tamanho 20", preco: 1800 },
+                    { nome: "Tamanho 21", preco: 2100 },
+                    { nome: "Tamanho 22", preco: 2500 }
+                ]
+            },
+            {
+                id: 2,
+                nome: "Bolo de Aniversário Elegante",
+                categoria: "aniversario",
+                descricao: "Bolo artístico personalizado para celebrar aniversários com muito estilo.",
+                imagens: ["imagens/boloaniver3.jpeg", "imagens/boloaniver.jpeg"],
+                opcoes: [
+                    { nome: "Tamanho 18", preco: 1400 },
+                    { nome: "Tamanho 19", preco: 1600 },
+                    { nome: "Tamanho 20", preco: 1900 },
+                    { nome: "Tamanho 21", preco: 2200 },
+                    { nome: "Tamanho 22", preco: 2600 }
+                ]
+            },
+            {
+                id: 3,
+                nome: "Bolo de Batismo Delicado",
+                categoria: "batismo",
+                descricao: "Bolo com acabamento clean e delicado, ideal para cerimónias de batismo.",
+                imagens: ["imagens/boloaniver.jpeg"],
+                opcoes: [
+                    { nome: "Tamanho 18", preco: 1500 },
+                    { nome: "Tamanho 20", preco: 2000 },
+                    { nome: "Tamanho 22", preco: 2700 }
+                ]
+            },
+            {
+                id: 4,
+                nome: "Salgados Variados (Dúzia)",
+                categoria: "festas",
+                descricao: "Salgados crocantes e fresquinhos, perfeitos para festas e eventos.",
+                imagens: ["imagens/combosalgados.jpeg"],
+                opcoes: [
+                    { nome: "Rissóis de Camarão", preco: 300 },
+                    { nome: "Rissóis de Carne", preco: 280 },
+                    { nome: "Chamuças de Frango", preco: 250 },
+                    { nome: "Coxinhas de Frango", preco: 320 }
+                ]
+            },
+            {
+                id: 5,
+                nome: "Mesa de Doces para Festas",
+                categoria: "festas",
+                precoBase: 1200,
+                descricao: "Seleção de doces variados para compor a mesa da sua festa.",
+                imagens: ["imagens/mesadoces.jpeg"]
+            }
+        ];
+
+        let categoriaAtual = 'todos';
+        let indicesImagensAtivas = {};
+        let carrinho = [];
+        let produtoSelecionadoTemp = null;
+        let opcaoSelecionadaTemp = null;
+        let timerSlideshow = null;
+        let ultimoCalculoEvento = null;
+
+        const IMG_FALLBACK = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarProdutos(produtosAginaSabores);
+            iniciarSlideshowAutomatico();
+        });
+
+        function tratarErroImagem(imgElement) {
+            imgElement.onerror = null;
+            imgElement.src = IMG_FALLBACK;
+        }
+
+        function abrirZoom(src) {
+            const modal = document.getElementById('modalZoom');
+            const img = document.getElementById('imgModalZoom');
+            img.src = src;
+            modal.classList.remove('hidden');
+        }
+
+        function fecharZoom() {
+            document.getElementById('modalZoom').classList.add('hidden');
+        }
+
+        function iniciarSlideshowAutomatico() {
+            if (timerSlideshow) clearInterval(timerSlideshow);
+            timerSlideshow = setInterval(() => {
+                produtosAginaSabores.forEach(produto => {
+                    if (produto.imagens && produto.imagens.length > 1) {
+                        mudarFotoCard(produto.id, 1, false);
+                    }
+                });
+            }, 3500);
+        }
+
+        function renderizarProdutos(lista) {
+            const container = document.getElementById('lista-produtos');
+            container.innerHTML = "";
+
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-gray-400 italic py-12 text-sm">Nenhum produto encontrado nesta categoria.</p>`;
+                return;
+            }
+
+            lista.forEach(p => {
+                const fotosArray = p.imagens && p.imagens.length > 0 ? p.imagens : [IMG_FALLBACK];
+                const pId = p.id;
+                if (indicesImagensAtivas[pId] === undefined) indicesImagensAtivas[pId] = 0;
+
+                let precoExibicao = "";
+                if (p.precoBase) {
+                    precoExibicao = `${parseFloat(p.precoBase).toLocaleString('pt-MZ')} MZN`;
+                } else if (p.opcoes && p.opcoes.length > 0) {
+                    const menorPreco = Math.min(...p.opcoes.map(o => o.preco));
+                    precoExibicao = `A partir de ${menorPreco.toLocaleString('pt-MZ')} MZN`;
+                }
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between transition-all duration-300 group";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden aspect-[4/3] bg-gray-50 group/img">
+                            <img id="img-slide-${pId}" src="${fotosArray[indicesImagensAtivas[pId]]}" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="${p.nome}" class="img-fade w-full h-full object-cover group-hover:scale-105 cursor-zoom-in">
+                            <span class="absolute top-3 right-3 bg-magenta text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider z-10">${p.categoria}</span>
+                        </div>
+                        <div class="p-4 sm:p-5 space-y-1.5">
+                            <h3 class="text-base font-bold text-gray-900 group-hover:text-magenta transition-colors">${p.nome}</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">${p.descricao}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 pt-0 flex items-center justify-between mt-2">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block">Preço</span>
+                            <span class="text-sm sm:text-base font-extrabold text-magenta">${precoExibicao}</span>
+                        </div>
+                        <button onclick="cliqueBotaoProduto(${p.id})" class="bg-magenta hover:bg-magenta-dark text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-semibold text-xs transition duration-300 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function mudarFotoCard(id, direcao, interacaoManual = false) {
+            const produto = produtosAginaSabores.find(p => p.id === id);
+            if (!produto) return;
+            const imgElement = document.getElementById(`img-slide-${id}`);
+            if (!imgElement) return;
+
+            const fotos = produto.imagens && produto.imagens.length > 0 ? produto.imagens : [IMG_FALLBACK];
+            let index = indicesImagensAtivas[id] + direcao;
+
+            if (index >= fotos.length) index = 0;
+            if (index < 0) index = fotos.length - 1;
+
+            indicesImagensAtivas[id] = index;
+
+            imgElement.style.opacity = '0.3';
+            setTimeout(() => {
+                imgElement.src = fotos[index];
+                imgElement.style.opacity = '1';
+            }, 150);
+
+            if (interacaoManual) iniciarSlideshowAutomatico();
+        }
+
+        function filtrarCategoria(cat, btn) {
+            categoriaAtual = cat;
+            document.querySelectorAll('.btn-cat').forEach(b => {
+                b.className = "btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition";
+            });
+            if (btn) btn.className = "btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-magenta text-white text-xs sm:text-sm transition shadow-sm";
+
+            filtrarProdutos();
+        }
+
+        function filtrarProdutos() {
+            const termo = document.getElementById('campo-busca').value.toLowerCase().trim();
+            const filtrados = produtosAginaSabores.filter(p => {
+                const bateCategoria = (categoriaAtual === 'todos' || p.categoria === categoriaAtual);
+                const bateTexto = p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo);
+                return bateCategoria && bateTexto;
+            });
+            renderizarProdutos(filtrados);
+        }
+
+        function cliqueBotaoProduto(idProduto) {
+            const produto = produtosAginaSabores.find(p => p.id === idProduto);
+            if (!produto) return;
+
+            if (produto.opcoes && produto.opcoes.length > 0) {
+                abrirModalOpcoes(produto);
+            } else {
+                adicionarAoCarrinhoDireto(produto);
+            }
+        }
+
+        function abrirModalOpcoes(produto) {
+            produtoSelecionadoTemp = produto;
+            const modal = document.getElementById('modalOpcoes');
+            const titulo = document.getElementById('modalOpcoesTitulo');
+            const corpo = document.getElementById('modalOpcoesCorpo');
+            const precoSpan = document.getElementById('modalOpcoesPreco');
+
+            titulo.innerText = `Escolher Opção: ${produto.nome}`;
+            corpo.innerHTML = "";
+
+            produto.opcoes.forEach((opcao, idx) => {
+                const checked = idx === 0 ? 'checked' : '';
+                if (idx === 0) opcaoSelecionadaTemp = opcao;
+
+                const div = document.createElement('label');
+                div.className = "flex items-center justify-between p-3 border rounded-xl cursor-pointer hover:border-magenta bg-gray-50 transition";
+                div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input type="radio" name="opcaoProduto" value="${idx}" ${checked} onchange="selecionarOpcaoTemp(${produto.id}, ${idx})" class="accent-magenta">
+                        <span class="text-sm font-bold text-gray-800">${opcao.nome}</span>
+                    </div>
+                    <span class="text-sm font-extrabold text-magenta">${opcao.preco.toLocaleString('pt-MZ')} MZN</span>
+                `;
+                corpo.appendChild(div);
+            });
+
+            if (opcaoSelecionadaTemp) {
+                precoSpan.innerText = `${opcaoSelecionadaTemp.preco.toLocaleString('pt-MZ')} MZN`;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function selecionarOpcaoTemp(idProduto, idxOpcao) {
+            const produto = produtosAginaSabores.find(p => p.id === idProduto);
+            if (!produto) return;
+            opcaoSelecionadaTemp = produto.opcoes[idxOpcao];
+            document.getElementById('modalOpcoesPreco').innerText = `${opcaoSelecionadaTemp.preco.toLocaleString('pt-MZ')} MZN`;
+        }
+
+        function fecharModalOpcoes() {
+            document.getElementById('modalOpcoes').classList.add('hidden');
+            produtoSelecionadoTemp = null;
+            opcaoSelecionadaTemp = null;
+        }
+
+        function confirmarAdicaoCarrinho() {
+            if (!produtoSelecionadoTemp || !opcaoSelecionadaTemp) return;
+
+            const item = {
+                idCart: Date.now(),
+                id: produtoSelecionadoTemp.id,
+                nome: produtoSelecionadoTemp.nome,
+                detalhes: opcaoSelecionadaTemp.nome,
+                preco: opcaoSelecionadaTemp.preco,
+                qtd: 1
+            };
+
+            carrinho.push(item);
+            fecharModalOpcoes();
+            atualizarCarrinho();
+            toggleCarrinho(true);
+        }
+
+        function adicionarAoCarrinhoDireto(produto) {
+            const item = {
+                idCart: Date.now(),
+                id: produto.id,
+                nome: produto.nome,
+                detalhes: produto.categoria.toUpperCase(),
+                preco: produto.precoBase,
+                qtd: 1
+            };
+
+            carrinho.push(item);
+            atualizarCarrinho();
+            toggleCarrinho(true);
+        }
+
+        function removerItemCarrinho(idCart) {
+            carrinho = carrinho.filter(i => i.idCart !== idCart);
+            atualizarCarrinho();
+        }
+
+        function alterarQuantidade(idCart, delta) {
+            const item = carrinho.find(i => i.idCart === idCart);
+            if (item) {
+                item.qtd += delta;
+                if (item.qtd <= 0) {
+                    removerItemCarrinho(idCart);
+                    return;
+                }
+            }
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const container = document.getElementById('itens-carrinho');
+            const headerCount = document.getElementById('cart-count-header');
+            const floatCounts = document.querySelectorAll('#cart-count-float');
+
+            container.innerHTML = "";
+            let totalItens = 0;
+
+            if (carrinho.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-gray-400">
+                    <i class="fa-solid fa-basket-shopping text-4xl mb-3 block text-magenta/40"></i>
+                    <p class="text-xs sm:text-sm">Seu carrinho está vazio.</p>
+                </div>`;
+            } else {
+                carrinho.forEach(item => {
+                    const subtotal = item.preco * item.qtd;
+                    totalItens += item.qtd;
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "bg-gray-50 p-3 rounded-xl border border-gray-100 space-y-2 relative group";
+                    itemDiv.innerHTML = `
+                        <div class="flex items-start justify-between pr-6">
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-xs sm:text-sm">${item.nome}</h4>
+                                <p class="text-[10px] sm:text-xs text-magenta font-medium leading-snug">${item.detalhes}</p>
+                            </div>
+                            <span class="font-bold text-magenta text-xs">${subtotal.toLocaleString('pt-MZ')} MZN</span>
+                        </div>
+                        
+                        <button onclick="removerItemCarrinho(${item.idCart})" title="Remover item" class="absolute top-2.5 right-2.5 text-red-400 hover:text-red-600 p-1 text-xs">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+
+                        <div class="flex items-center justify-between border-t border-gray-200/60 pt-2">
+                            <span class="text-[10px] text-gray-400">${item.preco.toLocaleString('pt-MZ')} MZN un.</span>
+                            <div class="flex items-center border border-gray-200 rounded-lg bg-white overflow-hidden">
+                                <button onclick="alterarQuantidade(${item.idCart}, -1)" class="px-2 py-0.5 text-gray-600 hover:bg-gray-100 text-xs font-bold">-</button>
+                                <span class="px-2 text-xs font-bold text-gray-800">${item.qtd}</span>
+                                <button onclick="alterarQuantidade(${item.idCart}, 1)" class="px-2 py-0.5 text-gray-600 hover:bg-gray-100 text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+            }
+
+            if (headerCount) headerCount.innerText = totalItens;
+            floatCounts.forEach(fc => fc.innerText = totalItens);
+            atualizarTotalCarrinho();
+        }
+
+        function atualizarTotalCarrinho() {
+            let subtotal = 0;
+            carrinho.forEach(item => subtotal += (item.preco * item.qtd));
+            document.getElementById('total-carrinho').innerText = `${subtotal.toLocaleString('pt-MZ')} MZN`;
+        }
+
+        function toggleCarrinho(forcarAbertura = false) {
+            const modal = document.getElementById('carrinho-modal');
+            if (forcarAbertura || modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("O seu carrinho está vazio.");
+                return;
+            }
+
+            const telefone = "258840108477";
+            let mensagem = "👋 Olá, Maria Clara Bolos Artísticos! Gostaria de realizar o seguinte pedido:\n\n";
+
+            let subtotal = 0;
+            carrinho.forEach(item => {
+                const sub = item.preco * item.qtd;
+                subtotal += sub;
+                mensagem += `• *${item.nome}* (${item.detalhes})\n  *Qtd:* ${item.qtd}x | *Subtotal:* ${sub.toLocaleString('pt-MZ')} MZN\n\n`;
+            });
+
+            mensagem += `─────────────\n`;
+            mensagem += `💰 *Total Final:* ${subtotal.toLocaleString('pt-MZ')} MZN\n`;
+            mensagem += `🏪 *Entrega:* Retirada no Local (Beira - Pioneiros, Rua da escola da Fátima)\n\n`;
+            mensagem += `💳 *Método de Pagamento (M-Pesa):* 840108477 - Maria Clara / Elisa Monteiro\n\n`;
+            mensagem += `Por favor, confirmem a disponibilidade do pedido. Obrigado!`;
+
+            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+
+        function enviarKitWhatsApp(nomeKit, precoKit) {
+            const telefone = "258840108477";
+            let msg = `👋 Olá, Maria Clara Bolos Artísticos!\n\nGostaria de encomendar o *${nomeKit}* (${precoKit}).\n\nPor favor, confirmem os detalhes para o pagamento via M-Pesa e levantamento. Obrigado!`;
+            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function calcularEvento(e) {
+            e.preventDefault();
+            const pessoas = parseInt(document.getElementById('calcPessoas').value);
+            const tipo = document.getElementById('calcTipo').value;
+
+            if (!pessoas || pessoas < 1) return;
+
+            const salgadosDuzias = Math.ceil((pessoas * 6) / 12);
+            let boloSugerido = "Tamanho 18";
+
+            if (pessoas > 12 && pessoas <= 20) boloSugerido = "Tamanho 19";
+            else if (pessoas > 20 && pessoas <= 30) boloSugerido = "Tamanho 20";
+            else if (pessoas > 30 && pessoas <= 40) boloSugerido = "Tamanho 21";
+            else if (pessoas > 40) boloSugerido = "Tamanho 22";
+
+            document.getElementById('resSalgados').innerText = `${salgadosDuzias} dúzias`;
+            document.getElementById('resBolo').innerText = boloSugerido;
+
+            ultimoCalculoEvento = { pessoas, tipo, salgadosDuzias, boloSugerido };
+            document.getElementById('resultadoCalculadora').classList.remove('hidden');
+        }
+
+        function enviarCalculoWhatsApp() {
+            if (!ultimoCalculoEvento) return;
+            const telefone = "258840108477";
+            
+            let msg = `👋 Olá, Maria Clara Bolos Artísticos!\n\nUsei a calculadora no site para o meu evento e gostaria de solicitar um orçamento:\n\n`;
+            msg += `👥 *Nº de Convidados:* ${ultimoCalculoEvento.pessoas}\n`;
+            msg += `🎉 *Tipo de Evento:* ${ultimoCalculoEvento.tipo}\n\n`;
+            msg += `📌 *Estimativa Gerada:*\n`;
+            msg += `• *Salgados:* ${ultimoCalculoEvento.salgadosDuzias} dúzias\n`;
+            msg += `• *Bolo:* ${ultimoCalculoEvento.boloSugerido}\n\n`;
+            msg += `Gostaria de verificar disponibilidade para a minha data!`;
+
+            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
